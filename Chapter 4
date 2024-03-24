@@ -1,0 +1,16 @@
+#Comma Code
+
+spam = ['apples','bananas','tofu','cats']
+emptylist = []
+
+def somefunction(list):
+    for i in range(len(list)):
+        if i == len(list)-2:
+            print(list[i] + ' and ', end='')
+        elif i == len(list)-1:
+            print(list[i])
+        else:
+            print(list[i] + ',', end = ' ')
+            
+somefunction(spam)
+somefunction(emptylist)
