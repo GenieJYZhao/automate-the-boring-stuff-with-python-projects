@@ -14,3 +14,38 @@ def somefunction(list):
             
 somefunction(spam)
 somefunction(emptylist)
+
+---------------------------------------------------------------------
+# Coin Flip Streaks
+import random
+numberofstreaks = 0
+for experimentNumber in range(10000):
+    #code that creates a list of 100 'heads' or 'tails' values.
+   
+    results=[]
+    for i in range (100):
+        if random.randint(0,1) == 1:
+            flip = 'heads'
+        else:
+            flip = 'tails'
+        results.append(flip)
+    
+    #code that checks if there is a streak of 6 heads or tails in a row.
+    start = 0
+    countcontinous = 0
+    while start < 99:
+        next_result = start+1
+        if results[start] == results[next_result]:
+            countcontinous +=1
+            if countcontinous ==6:
+                break
+        else:
+            countcontinous=0
+        start += 1
+       
+    
+    if countcontinous == 6:
+        numberofstreaks +=1
+
+print('Chance of streak: %s%%' %(numberofstreaks/100))
+print(numberofstreaks/10000)
