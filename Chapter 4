@@ -32,7 +32,7 @@ for experimentNumber in range(10000):
     
     #code that checks if there is a streak of 6 heads or tails in a row.
     start = 0
-    countcontinous = 0
+    countcontinous = 1
     while start < 99:
         next_result = start+1
         if results[start] == results[next_result]:
@@ -40,7 +40,7 @@ for experimentNumber in range(10000):
             if countcontinous ==6:
                 break
         else:
-            countcontinous=0
+            countcontinous=1
         start += 1
        
     
