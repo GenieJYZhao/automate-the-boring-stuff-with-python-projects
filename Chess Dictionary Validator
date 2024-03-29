@@ -1,0 +1,63 @@
+
+
+chess ={'1a': 'wking','2a': 'bking','3a': 'w ','4a': 'bpawn','5a': ' ','6a': 'bpawn','7a': ' ','8a': ' ',
+        '1b': ' ','2b': 'bpawn','3b': ' ','4b': 'w ','5b': 'b ','6b': 'bpawn','7b': ' ','8b': 'w ',
+        '1c': 'w ','2c': ' ','3c': ' ','4c': 'bpawn','5c': ' ','6c': ' ','7c': ' ','8c': 'w ',
+        '1d': ' ','2d': 'bpawn','3d': ' ','4d': 'w ','5d': 'bpawn','6d': ' ','7d': ' ','8d': ' ',
+        '1e': 'w ','2e': ' ','3e': 'w ','4e': ' ','5e': ' ','6e': ' ','7e': 'w ','8e': 'w ',
+        '1f': 'w ','2f': 'b ','3f': ' ','4f': ' ','5f': ' ','6f': ' ','7f': ' ','8f': ' ',
+        '1g': 'w ','2g': ' ','3g': 'w ','4g': ' ','5g': 'w ','6g': ' ','7g': 'b ','8g': ' ',
+        '1h': 'w ','2h': 'bpawn','3h': ' ','4h': ' ','5h': ' ','6h': 'b ','7h': 'b ','8h': 'b '}
+
+def isValidchessBoard(list):
+    countbk = 0
+    countwk = 0
+    bpieces = 0
+    wpieces = 0
+    bpawn = 0
+    wpawn = 0
+    for i in list.values():
+        if i == 'bking':
+            countbk += 1
+        elif i == 'wking':
+            countwk += 1
+        elif i == 'bpawn':
+            bpawn += 1
+        elif i == 'wpawn':
+            wpawn += 1
+        elif i[0] == 'w':
+            wpieces += 1
+        elif i[0] == 'b':
+            bpieces += 1
+    
+    condition1=None
+    condition2=None
+    outofrange=None
+    if countbk != 1 or countwk != 1 or bpawn > 8 or wpawn > 8:
+        condition1 = False
+    else:
+        condition1 = True
+        
+    if (countbk + bpawn + bpieces > 16) or (countwk + wpawn + wpieces >16):
+        condition2 = False
+    else:
+        condition2 = True
+    
+    for j in list.keys():
+        number = int(j[0]) 
+        letter = str(j[1])
+        if number < 9: #letter not in ['a','b','c','d','e','f','g','h']:
+            outofrange = True
+        else: 
+            outofrange = False
+            break
+            
+    
+    print('Result for condition1: ' + str(condition1))
+    print('Result for condition2: ' + str(condition2))
+    print('Result for outofrange: ' + str(outofrange))
+    print ('Valid chess board? ' + str(condition1 and condition2 and outofrange))
+    
+    
+    
+isValidchessBoard(chess)
