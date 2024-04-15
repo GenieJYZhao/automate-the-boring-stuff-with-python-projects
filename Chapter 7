@@ -28,8 +28,10 @@ def datedetection(date):
             elif yearint %4 == 0 and yearint %100 == 0:
                 if yearint%400==0 and dayint in range (1,30):
                     print(f'your date: {date} is valid!')
+                elif yearint%400 !=0 and dayint in range (1,29):
+                    print(f'your date: {date} is valid!')
                 else:
-                    print(f'your date: {date} is not invalid! this feburary has 29 days!')
+                    print(f'your date: {date} is not invalid! Wrong days entered!')
             elif yearint %4 != 0 and dayint in range (1,29):
                  print(f'your date: {date} is valid!')
             else:
