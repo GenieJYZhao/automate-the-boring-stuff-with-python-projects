@@ -1,0 +1,48 @@
+# Date Detection
+
+import re
+       
+def datedetection(date):
+
+    dateregex = re.compile(r'(\d{2})/(\d{2})/(\d{4})')
+    datelist=dateregex.findall(date)
+    (day, month, year) = datelist[0]
+    dayint = int(day)
+    monint = int(month)
+    yearint = int(year)
+    
+
+    thirtydaymonth = [4,6,9,11]
+    thirtyonedaymonth = [1,3,5,7,8,10,12]
+    if monint in range(1,13):
+        if monint in thirtydaymonth and dayint in range(1,31):
+            print(f'your date: {date} is valid!')
+        elif monint in thirtyonedaymonth and dayint in range (1, 32):
+            print(f'your date: {date} is valid!')
+        elif monint == 2:
+            if yearint % 4 == 0 and yearint % 100 != 0:
+                if dayint in range (1, 30):
+                    print(f'your date: {date} is valid!')
+                else:
+                    print(f'your date: {date} is not invalid! This feburary has 29 days!')
+            elif yearint %4 == 0 and yearint %100 == 0:
+                if yearint%400==0 and dayint in range (1,30):
+                    print(f'your date: {date} is valid!')
+                else:
+                    print(f'your date: {date} is not invalid! this feburary has 29 days!')
+            elif yearint %4 != 0 and dayint in range (1,29):
+                 print(f'your date: {date} is valid!')
+            else:
+                print (f'your date: {date} is invalid! this feburary only has 28 days!')
+                
+        else:
+            print(f'your date: {date} is not a valid date, please check the number of days entered')         
+
+
+
+    else:
+        print(f'your date: {date} is not a valid date, you need to enter a month within 1-12. Please try again!')
+
+
+
+datedetection('29/02/2014')
