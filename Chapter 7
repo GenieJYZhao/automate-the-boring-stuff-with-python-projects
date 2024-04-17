@@ -48,3 +48,50 @@ def datedetection(date):
 
 
 datedetection('29/02/2014')
+
+
+
+------------------------------------------
+#Strong password detection
+import re
+
+def strongpassword(password):
+    length=re.compile(r'\w{8,}')
+    uppercase=re.compile(r'[A-Z]+')
+    lowercase=re.compile(r'[a-z]+')
+    digit=re.compile(r'\d+')
+
+    test1=length.search(password)
+    test2=uppercase.search(password)
+    test3=lowercase.search(password)
+    test4=digit.search(password)
+
+
+    if test1==None:
+        result1=1
+    else:
+        result1=0
+    if test2==None:
+        result2=1
+    else:
+        result2=0
+    if test3==None:
+        result3=1
+    else:
+        result3=0
+    if test4== None:
+        result4=1
+    else:
+        result4=0
+     
+
+    if int(result1)+int(result2)+int(result3)+int(result4) == 0:
+        print('your password is strong enough')
+    else:
+        print('your password is not strong, please re-enter again.')
+
+
+message = input('Please enter a strong password: \n')
+
+strongpassword(message)
+
