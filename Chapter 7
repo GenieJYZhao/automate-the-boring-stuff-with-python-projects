@@ -95,3 +95,47 @@ message = input('Please enter a strong password: \n')
 
 strongpassword(message)
 
+
+---------------
+# strip method
+import re
+
+def strip(string,remove=None):
+
+    beginningspace=re.compile(r'^\s+.*')
+    endingspace=re.compile(r'.*\s+$')
+    
+    if remove==None:
+        begin=beginningspace.search(string)
+        end=endingspace.search(string)
+        if begin != None:
+            space=re.compile(r'^\s+')
+            leadingspaces = space.search(string).group()
+            string=string.replace(leadingspaces, '',1)
+
+        elif end !=None:
+            space=re.compmile(r'\s+$')
+            trailingspaces=space.search(string).group()
+            string=string.reverse().replace(trailingspaces,'',1)
+            string.reverse()
+        else:
+            return string
+        print(string)
+   
+
+    else:
+            newstring=string.replace(remove,'')
+
+            print(newstring)
+
+prompt=input('Please enter a string to strip, and a substring to remove from the string, seperate with comma \n')
+
+list=prompt.split(sep=",")
+
+if len(list)==2:
+
+    strip(list[0], list[1])
+
+elif len(list)==1:
+    strip(list[0])
+    
