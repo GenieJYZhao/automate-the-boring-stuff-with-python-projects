@@ -1,0 +1,46 @@
+#Sandwich Maker
+
+import pyinputplus as pyip
+
+def sandwichmaker():
+    print('Bread Type ', end='')
+    breadtype= pyip.inputMenu(['wheat','white','sourdough'])
+    print('Protein type ', end='')
+    proteintype=pyip.inputMenu(['chicken','turkey','ham','tofu'])
+    
+    cheesechoice=pyip.inputYesNo(prompt='Would you like cheese?')
+    
+    
+    if cheesechoice.upper() == 'YES':
+        cheesetype = pyip.inputMenu(['cheddar','Swiss','Mozzarella'])
+
+    vegechoice=pyip.inputYesNo(prompt='Would you like mayo, mustard, lettuce and tomato?')
+
+    number=pyip.inputInt(prompt='How many Burgers would you like?', greaterThan=0)
+
+
+    pricelist = {"WHEAT":5, "WHITE":6, "SOURDOUGH":7, "CHKECKEN":5, "TURKEY":6, "HAM": 4,
+                 "TOFU":3,"CHEDDAR":3, "SWISS":4,"MOZZARELLA":5, "VEGE": 3}
+
+    choicelist=[]
+    choicelist.append(breadtype.upper())
+    choicelist.append(proteintype.upper())
+    if cheesechoice.upper()=='YES':
+        choicelist.append(cheesetype.upper())
+    if vegechoice.upper() =='YES':
+        choicelist.append("VEGE")
+
+    print(choicelist)
+    
+    finalprice=[]
+    
+    for x in choicelist:
+        if x in pricelist:
+            finalprice.append(pricelist[x])
+
+    TotalCost=sum(finalprice)*number
+    
+
+    print(f"For your choice of {choicelist}, the total cost is {TotalCost}")
+            
+sandwichmaker()
