@@ -1,0 +1,30 @@
+#############Exending the Multi-Clipboard
+
+#! python3
+# mcb.pyw - saves and loads pieces of text to the clipboard
+# Usage: py.exe mcb.pyw save <keyword> - save clipboard to keyword
+#        py.exe mcb.pyw <keyword> - loads keyword to clipboard
+#        py.exe mcb.pyw list - Loads all keywords to clipboard
+#        py.exe mcb.pyw delete <keyword> - delete keyword from mcb
+#        py.exe mcb.pyw delete - delete all keywords
+
+import shelve, pyperclip, sys
+mcbshelf = shelve.open('mcb')
+
+#save clipboard content
+
+if len(sys.argv) == 3:
+    if sys.argv[1].lower()== 'save':
+       mcbshelf[sys.argv[2]]= pyperclip.paste()
+    elif sys.argv[1].lower()=='delete':
+        del mcbshelf[sys.argv[2]]
+    
+elif len(sys.argv) == 2:
+
+    if sys.argv[1].lower() == 'list':
+        pyperclip.copy(str(list(mcbshelf.keys())))
+    elif sys.argv[1].lower()=='delete':
+        mcbshelf.clear()
+    elif sys.argv[1] in mcbshelf:
+        pypclip.copy(str(mcbshelf[sys.argv[1]]))
+    
