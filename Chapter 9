@@ -27,4 +27,30 @@ elif len(sys.argv) == 2:
         mcbshelf.clear()
     elif sys.argv[1] in mcbshelf:
         pypclip.copy(str(mcbshelf[sys.argv[1]]))
+
+##----------------------------------------
+##Mad Libs
+import re
+
+def madlibs(file):
+    regex=re.compile(r'ADJECTIVE|NOUN|ADVERB|VERB')
+  
+
+    textfile=open(str(file),'r')
+    newtextfile=open('newfile.txt', 'w')
+
+    
+    textcontent=textfile.read()
+    textfile.close()
+  
+    while regex.search(textcontent) is not None:
+        match= regex.search(textcontent).group()
+        replace = input(f'Enter an {match}: \n')
+        textcontent=regex.sub(replace, textcontent,1)
+    
+
+    print(textcontent)
+    newtextfile=textcontent
+
+    newtextfile.close()
     
