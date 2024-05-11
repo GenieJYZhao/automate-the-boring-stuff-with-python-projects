@@ -54,3 +54,29 @@ def madlibs(file):
 
     newtextfile.close()
     
+###------------------Regex Search
+
+from pathlib import Path
+import re
+
+p=Path.cwd()
+filepath= list(p.glob('*.txt'))
+list=[]
+
+expression = input('Enter the pattern: \n')
+
+formattedre=str("r'"+ expression + "'")
+print(formattedre)
+
+regex=re.compile(expression)
+
+for i in filepath:
+    with open(i) as f:
+      content=f.read()
+      print(content)
+      if regex.search(content) is not None:
+         filename = Path(i).name
+         list.append(filename)
+    f.close()
+
+print(list)
