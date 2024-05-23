@@ -1,0 +1,14 @@
+# Selective Copy
+import os, shutil
+from pathlib import Path
+
+p=Path.home()
+
+
+for folder, subfolder, filename in os.walk(p):
+    for filename in folder.glob('*.jpg'):
+        shutil.copy(p/'folder', p/'all jpg files')
+    for filename in subfolder.glob('*.jpg'):
+        shutil.copy(p/'folder'/'subfolder', p/'all jpg files')
+    
+    
